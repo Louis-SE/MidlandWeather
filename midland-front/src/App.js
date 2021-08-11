@@ -1,7 +1,7 @@
 // import './App.css';
 import WeatherWidget from './components/weatherwidget'
 
-const cities = ['Chicago', 'Fort Myers', 'Sioux Falls']
+const cities = ['Chicago', 'FortMyers', 'SiouxFalls']
 
 
 function App() {
