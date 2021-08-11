@@ -1,13 +1,13 @@
 import React from 'react'
 
-const degreeSymbol = '\u00B0F'
+const degreeSymbol = '\u00B0'
 
 const Office = ({city, imageURL, temperature, description}) => {
     return(
         <span>
-            <h2>{city}</h2>
+            <div>{city}</div>
             <img src={imageURL}></img>
-            <div>{temperature}</div>
+            <div>{`Currently ${temperature}${degreeSymbol} F`}</div>
             <div>{description}</div>
         </span>)
 }

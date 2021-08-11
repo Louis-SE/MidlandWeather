@@ -1,8 +1,8 @@
 import React from 'react'
 import Office from '../office'
 
-const WeatherWidget = ({locationWeatherData}) => (
-    locationWeatherData.map(locationWeather => {
+const WeatherWidget = ({locations}) => (
+    locations.map(location => {
         return <Office {...locationWeather}/>
     })
 ) 
