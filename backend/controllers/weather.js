@@ -7,24 +7,25 @@ const locationIDMap = require('../locationMap')
 
 
 const getWeather = (req, res) =>  {
-    console.log("request detected")
-
     const {city} = req.params
-    console.log(`Retrieving data for ${city}`);
-
     const mappableCity = city.replace('/\s/g', '').toLowerCase()
 
+    if(!locationIDMap.has(mappableCity)) {
+        res.status(404).json({Status: 'Error', Message: 'Resource not found'})
+    }
+    else {
+        try {
+            (async () => {
+                const locationWeather = await fetchWeatherDataTemp(locationIDMap.get(mappableCity))
+                res.json(locationWeather)
+            })();
+        }
+        catch(error) {
+            console.log(error)
+            res.status(404).json({Status: 'Error', Message: 'Unable to processes request'})
+        }
+    }
 
-    try {
-        (async () => {
-            const locationWeather = await fetchWeatherData(locationIDMap.get(mappableCity))
-            res.json(locationWeather)
-        })();
-    }
-    catch(error) {
-        console.log(error)
-        res.status(404).json({Status: 'Error', Message: 'Unable to processes request'})
-    }
 
 }
 
