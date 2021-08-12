@@ -14,11 +14,11 @@ export const Wrapper = styled.div`
 export const WeatherHeader = styled.div`
 
     display: flex;
-    height: 40px;
+    height: 32px;
     width: 100%;
     border-radius: 4px;
     background: #F1F1F1;
-    opacity: 0.8;
+    opacity: 0.9;
 `
 
 export const WeatherText = styled.div`

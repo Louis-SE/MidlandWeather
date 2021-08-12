@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import {Wrapper, CityHeader, TextDisplay, ImageDisplay} from './Office.styles'
 
 const baseURL = 'http://localhost:8080/api/weather'
 
@@ -13,8 +14,6 @@ const defaultTemperature = 0
 const defaultDescription = 'Default Description'
 
 const degreeSymbol = '\u00B0'
-
-
 
 const Office = ({location}) => {
     const [city, setCity] = useState (defaultCity)
@@ -44,12 +43,14 @@ const Office = ({location}) => {
     }, [])
 
     return (
-        <span>
-            <div>{city}</div>
-            <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={`${description}.png`}></img>
-            <div>{`Current ${temperature}${degreeSymbol} F`}</div>
-            <div>{description}</div>
-        </span>
+        <Wrapper>
+            <CityHeader>{city}</CityHeader>
+            <ImageDisplay>
+                <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={`${description}.png`}></img>
+            </ImageDisplay>
+            <TextDisplay>{`Current ${temperature}${degreeSymbol} F`}</TextDisplay>
+            <TextDisplay>{description}</TextDisplay>
+        </Wrapper>
     )
 
 }

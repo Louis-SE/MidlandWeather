@@ -2,20 +2,20 @@
 const fetch = require('node-fetch')
 const APIKey = process.env.WEATHER_API_KEY
 
-const locationIDMap = require('../locationMap')
+const cityIDMap = require('./cityMap')
 
 const getWeather = (req, res) =>  {
     const {city} = req.params
     const mappableCity = city.replace('/\s/g', '').toLowerCase()
 
-    if(!locationIDMap.has(mappableCity)) {
+    if(!cityIDMap.has(mappableCity)) {
         res.status(404).json({Status: 'Error', Message: 'Resource not found'})
     }
     else {
         try {
             (async () => {
-                const locationWeather = await fetchWeatherDataTemp(locationIDMap.get(mappableCity))
-                res.json(locationWeather)
+                const cityWeather = await fetchWeatherDataTemp(cityIDMap.get(mappableCity))
+                res.json(cityWeather)
             })();
         }
         catch(error) {
@@ -27,7 +27,7 @@ const getWeather = (req, res) =>  {
 
 }
 
-const fetchWeatherDataTemp = async(locationID) => {
+const fetchWeatherDataTemp = async(cityID) => {
     // Returns an object so that the weather API dones't have to be constantly accessed during development.
     const weatherData = {
         city: 'Temp City',
@@ -38,9 +38,9 @@ const fetchWeatherDataTemp = async(locationID) => {
     return weatherData
 }
 
-const fetchWeatherData = async (locationID) => {
+const fetchWeatherData = async (cityID) => {
     try {
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${locationID}&units=imperial&appid=${APIKey}`)
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityID}&units=imperial&appid=${APIKey}`)
         const json = await res.json()
         const weatherData = {
             city: json.name,
