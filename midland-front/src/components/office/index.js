@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-const degreeSymbol = '\u00B0'
-
 const baseURL = 'http://localhost:8080/api/weather'
-
 
 const getAPIWeather = async (location) => {
     const endPoint = `${baseURL}/${location}`
@@ -14,6 +11,8 @@ const defaultCity = 'Default City'
 const defaultIcon = '01d'
 const defaultTemperature = 0
 const defaultDescription = 'Default Description'
+
+const degreeSymbol = '\u00B0'
 
 
 
@@ -48,7 +47,7 @@ const Office = ({location}) => {
         <span>
             <div>{city}</div>
             <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={`${description}.png`}></img>
-            <div>{`Currently ${temperature}${degreeSymbol} F`}</div>
+            <div>{`Current ${temperature}${degreeSymbol} F`}</div>
             <div>{description}</div>
         </span>
     )

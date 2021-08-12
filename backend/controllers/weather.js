@@ -4,8 +4,6 @@ const APIKey = process.env.WEATHER_API_KEY
 
 const locationIDMap = require('../locationMap')
 
-
-
 const getWeather = (req, res) =>  {
     const {city} = req.params
     const mappableCity = city.replace('/\s/g', '').toLowerCase()
@@ -57,6 +55,5 @@ const fetchWeatherData = async (locationID) => {
         console.log(error)
     }
 }
-
 
 module.exports = {getWeather}

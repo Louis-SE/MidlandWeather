@@ -1,17 +1,18 @@
 // import './App.css';
 import WeatherWidget from './components/weatherwidget'
+import { GlobalStyle } from './GlobalStyles'
+import {Wrapper} from './App.styles'
 
 const cities = ['Chicago', 'FortMyers', 'SiouxFalls']
 
 
+
 function App() {
   return (
-    <div className="App">
-      <div className="App-header">
-        <div>Midland Weather</div>
+    <Wrapper className="App">
         <WeatherWidget locations={cities}/>
-      </div>
-    </div>
+        <GlobalStyle/>
+    </Wrapper>
 
   );
 }
