@@ -18,6 +18,8 @@ export const TextDisplay = styled.div`
 `
 
 export const ImageDisplay = styled.div`
-
+    display: flex; 
+    align-items: center;
+    justify-content: center;
 
 `

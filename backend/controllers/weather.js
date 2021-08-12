@@ -15,7 +15,7 @@ const getWeather = (req, res) =>  {
         try {
             (async () => {
                 const cityWeather = await fetchWeatherDataTemp(cityIDMap.get(mappableCity))
-                res.json(cityWeather)
+                res.status(200).json(cityWeather)
             })();
         }
         catch(error) {
@@ -53,6 +53,7 @@ const fetchWeatherData = async (cityID) => {
     }
     catch(error) {
         console.log(error)
+        throw new Error(error)
     }
 }
 
