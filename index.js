@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-const port = process.env.port || 8080
+const port = process.env.PORT || 8080
 
 // This was to resolve an issue with the client not being able to make API requests to the server.
 app.use(function (req, res, next) {
@@ -31,7 +31,7 @@ require('dotenv').config()
 const weather = require('./routes/weather')
 app.use('/api/weather', weather)
 
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
     res.status(200).json({Status: "Successful!"})
 })
 
