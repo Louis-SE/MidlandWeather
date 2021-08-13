@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import {Wrapper, CityHeader, TextDisplay, ImageDisplay} from './Office.styles'
 
-const baseURL = 'http://localhost:8080/api/weather'
+// const baseURL = 'http://localhost:8080/api/weather'
+const baseURL = ''
 
 const getAPIWeather = async (location) => {
     const endPoint = `${baseURL}/${location}`
