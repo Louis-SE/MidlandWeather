@@ -14,7 +14,7 @@ const getWeather = (req, res) =>  {
     else {
         try {
             (async () => {
-                const cityWeather = await fetchWeatherDataTemp(cityIDMap.get(mappableCity))
+                const cityWeather = await fetchWeatherData(cityIDMap.get(mappableCity))
                 res.status(200).json(cityWeather)
             })();
         }
