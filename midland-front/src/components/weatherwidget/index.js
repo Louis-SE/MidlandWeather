@@ -1,5 +1,6 @@
 import React from 'react'
 import Office from '../office'
+import PropTypes from 'prop-types'
 
 import {Wrapper, OfficeDisplay, WeatherHeader, WeatherText} from './WeatherWidget.styles'
 
@@ -19,6 +20,10 @@ const WeatherWidget = ({locations}) => {
     )
         
     
-} 
+}
+
+WeatherHeader.propTypes = {
+    locations: PropTypes.arrayOf(PropTypes.string)
+}
 
 export default WeatherWidget

@@ -5,6 +5,7 @@ const port = process.env.PORT || 8080
 
 const path = require('path')
 
+// Cors is needed for getting around Access-Control-Allow-Origin requirements when the app is pushed to Heroku.
 const cors = require('cors')
 app.use(cors())
 
@@ -19,11 +20,9 @@ app.get('/*', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
-app.get('/*', (req, res) => {
-    res.status(200).json({Status: "Successful!"})
-})
 
-
-app.listen(port,() =>{
+const server = app.listen(port,() =>{
     console.log(`Server started at ${port}`)
 })
+
+module.exports = {server, app}

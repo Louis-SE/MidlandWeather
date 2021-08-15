@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import {Wrapper, CityHeader, TextDisplay, ImageDisplay} from './Office.styles'
 
+
+// The base URL used when the app is running in 
 // const devURL = 'http://localhost:8080/api/weather'
+
+//The base URL used when the app is running in heroku.
 const baseURL = 'https://midland-weather.herokuapp.com/api/weather'
+
 
 const getAPIWeather = async (location) => {
     const endPoint = `${baseURL}/${location}`
@@ -53,7 +58,6 @@ const Office = ({location}) => {
             <TextDisplay>{description}</TextDisplay>
         </Wrapper>
     )
-
 }
 
 

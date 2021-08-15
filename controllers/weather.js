@@ -28,7 +28,7 @@ const getWeather = (req, res) =>  {
 }
 
 const fetchWeatherDataTemp = async(cityID) => {
-    // Returns an object so that the weather API dones't have to be constantly accessed during development.
+    // Returns a static object so that the weather API dones't have to be constantly accessed during development.
     const weatherData = {
         city: 'Temp City',
         temperature: 80,
@@ -42,13 +42,14 @@ const fetchWeatherData = async (cityID) => {
     try {
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${cityID}&units=imperial&appid=${APIKey}`)
         const json = await res.json()
+
+        // json.weather ends up being an array, so in the case that the array is empty, a default image and description is used.
         const weatherData = {
             city: json.name,
             temperature: json.main.temp,
             icon: (json.weather.length > 0 ? json.weather[0].icon : '01d'),
             description: (json.weather.length > 0 ? json.weather[0].description : 'clear sky')
         }
-
         return weatherData
     }
     catch(error) {
@@ -57,4 +58,4 @@ const fetchWeatherData = async (cityID) => {
     }
 }
 
-module.exports = {getWeather}
+module.exports = {getWeather, fetchWeatherData, fetchWeatherDataTemp}
